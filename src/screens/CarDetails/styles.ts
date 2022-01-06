@@ -46,7 +46,9 @@ export const Name = styled.Text`
   color: ${({ theme }) => theme.colors.title};
   font-size: ${RFValue(25)}px;
 `;
+
 export const Rent = styled.View``;
+
 export const Period = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_500};
   color: ${({ theme }) => theme.colors.text_details};
@@ -65,4 +67,14 @@ export const About = styled.Text`
   font-size: ${RFValue(15)}px;
   text-align: justify;
   margin-top: 23px;
+  line-height: ${RFValue(25)}px;
+`;
+
+export const Acessories = styled.View`
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
 `;
