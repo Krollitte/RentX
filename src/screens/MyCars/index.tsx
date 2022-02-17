@@ -6,7 +6,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 import { Car } from "../../components/Car";
 import { BackButton } from "../../components/BackButton";
-import { Load } from "../../components/Load";
+import { LoadAnimantion } from "../../components/LoadAnimantion";
 
 import { CarDTO } from "../../dtos/CarDTO";
 import { api } from "../../services/api";
@@ -46,7 +46,7 @@ export function MyCars() {
   useEffect(() => {
     async function fetchCars() {
       try {
-        const response = await api.get("/schedules_bycars/?user_id=1");
+        const response = await api.get("/schedules_byuser/?user_id=1");
         setCars(response.data);
       } catch (err) {
         console.error("Não foi possível carregar", err);
@@ -73,7 +73,7 @@ export function MyCars() {
         <SubTitle>Conforto, segurança e praticidade</SubTitle>
       </Header>
       {loading ? (
-        <Load />
+        <LoadAnimantion />
       ) : (
         <Content>
           <Appointments>

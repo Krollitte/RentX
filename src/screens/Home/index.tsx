@@ -23,7 +23,7 @@ import Logo from "../../assets/logo.svg";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Car } from "../../components/Car";
-import { Load } from "../../components/Load";
+import { LoadAnimantion } from "../../components/LoadAnimantion";
 
 import {
   Container,
@@ -108,7 +108,7 @@ export function Home() {
         </HeaderContent>
       </Header>
       {loading ? (
-        <Load />
+        <LoadAnimantion />
       ) : (
         <CarList
           data={cars}
