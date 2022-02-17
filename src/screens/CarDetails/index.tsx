@@ -71,6 +71,7 @@ export function CarDetails() {
   }
 
   function handleBack() {
+    console.log("legal foi");
     navigation.goBack();
   }
 
@@ -91,7 +92,13 @@ export function CarDetails() {
         ]}
       >
         <Header>
-          <BackButton onPress={handleBack} />
+          <BackButton
+            onPress={() => {
+              console.log("teste");
+              handleBack();
+            }}
+            style={{ backgroundColor: "green" }}
+          />
         </Header>
         <Animated.View style={sliderCarsStyleAnimation}>
           <CarImages>
