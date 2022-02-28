@@ -44,13 +44,18 @@ export function SignUpSecondStep() {
   }
 
   function handleRegister() {
-    if (password || passwordConfirm) {
+    if (!password || !passwordConfirm) {
       return Alert.alert("Informe a senha e a confirmação dela");
     }
 
     if (password !== passwordConfirm) {
       return Alert.alert("As senhas não são iguais");
     }
+    navigation.navigate("Confirmation", {
+      nextScreenRoute: "SignIn",
+      title: "Conta Criada",
+      message: `Agora é só fazer login \ne aproveitar`,
+    });
   }
   return (
     <KeyboardAvoidingView behavior={"position"} enabled>
@@ -84,7 +89,11 @@ export function SignUpSecondStep() {
               placeholder="Repetir Senha"
             />
           </Form>
-          <Button title="Cadastrar" color={Theme.colors.success} />
+          <Button
+            title="Cadastrar"
+            onPress={handleRegister}
+            color={Theme.colors.success}
+          />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
