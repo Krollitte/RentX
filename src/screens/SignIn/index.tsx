@@ -17,13 +17,19 @@ export function SignIn() {
         backgroundColor="transparent"
       />
       <Header>
-        <Title>Estamos{"\n"}quase lá</Title>
+        <Title>Estamos{"\n"}quase lá.</Title>
         <SubTitle>
           Faça seu login para começar{"\n"}uma experiência incrível.
         </SubTitle>
       </Header>
       <Form>
-        <Input iconName="mail" />
+        <Input
+          iconName="mail"
+          autoCorrect={false}
+          placeholder="E-mail"
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
       </Form>
       <Footer>
         <Button

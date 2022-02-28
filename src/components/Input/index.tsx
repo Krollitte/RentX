@@ -1,17 +1,20 @@
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
-import { Container } from "./styles";
 import { TextInputProps } from "react-native";
+import { Container, IconContainer, InputText } from "./styles";
 
 interface Props extends TextInputProps {
   iconName: React.ComponentProps<typeof Feather>["name"];
 }
-export function Input({ iconName }: Props) {
+export function Input({ iconName, ...rest }: Props) {
   const theme = useTheme();
   return (
-    <Container>
-      <Feather name={iconName} size={24} />
+    <Container {...rest}>
+      <IconContainer>
+        <Feather name={iconName} size={24} />
+      </IconContainer>
+      <InputText {...rest} />
     </Container>
   );
 }
