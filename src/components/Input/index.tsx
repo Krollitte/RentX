@@ -12,7 +12,7 @@ export function Input({ iconName, ...rest }: Props) {
   return (
     <Container {...rest}>
       <IconContainer>
-        <Feather name={iconName} size={24} />
+        <Feather color={theme.colors.text_details} name={iconName} size={24} />
       </IconContainer>
       <InputText {...rest} />
     </Container>
