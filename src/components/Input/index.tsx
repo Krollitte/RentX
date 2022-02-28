@@ -23,8 +23,8 @@ export function Input({ iconName, value, ...rest }: Props) {
   }
 
   return (
-    <Container isFocused={isFocused} {...rest}>
-      <IconContainer>
+    <Container {...rest}>
+      <IconContainer isFocused={isFocused}>
         <Feather
           color={
             isFocused || isFilled
@@ -36,6 +36,7 @@ export function Input({ iconName, value, ...rest }: Props) {
         />
       </IconContainer>
       <InputText
+        isFocused={isFocused}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         {...rest}
