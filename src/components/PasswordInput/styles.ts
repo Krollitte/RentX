@@ -1,10 +1,21 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { TextInput } from "react-native";
 import { BorderlessButton } from "react-native-gesture-handler";
 
-export const Container = styled.View`
+interface ContainerProps {
+  isFocused: boolean;
+}
+
+export const Container = styled.View<ContainerProps>`
   flex-direction: row;
+
+  ${({ isFocused, theme }) =>
+    isFocused &&
+    css`
+      border-bottom-width: 2px;
+      border-bottom-color: ${theme.colors.main};
+    `}
 `;
 
 export const IconContainer = styled.View`
