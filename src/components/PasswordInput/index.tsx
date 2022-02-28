@@ -24,7 +24,7 @@ export function PasswordInput({ iconName, ...rest }: Props) {
       <IconContainer>
         <Feather color={theme.colors.text_details} name={iconName} size={24} />
       </IconContainer>
-      <InputText {...rest} secureTextEntry={isPasswordVisible} />
+      <InputText {...rest} secureTextEntry={!isPasswordVisible} />
       <ChangePasswordVisibilityButton onPress={handlesPasswordVisibilityChange}>
         <IconContainer>
           <Feather

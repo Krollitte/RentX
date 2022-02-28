@@ -1,5 +1,10 @@
 import React from "react";
-import { StatusBar } from "react-native";
+import {
+  Keyboard,
+  StatusBar,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { useTheme } from "styled-components";
 
 import { Input } from "../../components/Input";
@@ -11,51 +16,55 @@ import { PasswordInput } from "../../components/PasswordInput";
 export function SignIn() {
   const Theme = useTheme();
   return (
-    <Container>
-      <StatusBar
-        barStyle="dark-content"
-        translucent
-        backgroundColor="transparent"
-      />
-      <Header>
-        <Title>Estamos{"\n"}quase lá.</Title>
-        <SubTitle>
-          Faça seu login para começar{"\n"}uma experiência incrível.
-        </SubTitle>
-      </Header>
-      <Form>
-        <Input
-          iconName="mail"
-          autoCorrect={false}
-          placeholder="E-mail"
-          autoCapitalize="none"
-          keyboardType="email-address"
-        />
-        <PasswordInput
-          iconName="lock"
-          autoCorrect={false}
-          placeholder="Senha"
-          secureTextEntry
-          autoCapitalize="none"
-          keyboardType="email-address"
-        />
-      </Form>
-      <Footer>
-        <Button
-          title="Login"
-          onPress={() => {}}
-          enabled={false}
-          loading={false}
-        />
-        <Button
-          title="Criar conta gratuita"
-          color={Theme.colors.background_secondary}
-          light
-          onPress={() => {}}
-          enabled={false}
-          loading={false}
-        />
-      </Footer>
-    </Container>
+    <KeyboardAvoidingView behavior="position" enabled>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Container>
+          <StatusBar
+            barStyle="dark-content"
+            translucent
+            backgroundColor="transparent"
+          />
+          <Header>
+            <Title>Estamos{"\n"}quase lá.</Title>
+            <SubTitle>
+              Faça seu login para começar{"\n"}uma experiência incrível.
+            </SubTitle>
+          </Header>
+          <Form>
+            <Input
+              iconName="mail"
+              autoCorrect={false}
+              placeholder="E-mail"
+              autoCapitalize="none"
+              keyboardType="email-address"
+            />
+            <PasswordInput
+              iconName="lock"
+              autoCorrect={false}
+              placeholder="Senha"
+              secureTextEntry
+              autoCapitalize="none"
+              keyboardType="email-address"
+            />
+          </Form>
+          <Footer>
+            <Button
+              title="Login"
+              onPress={() => {}}
+              enabled={false}
+              loading={false}
+            />
+            <Button
+              title="Criar conta gratuita"
+              color={Theme.colors.background_secondary}
+              light
+              onPress={() => {}}
+              enabled={false}
+              loading={false}
+            />
+          </Footer>
+        </Container>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
