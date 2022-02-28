@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useTheme } from "styled-components";
 import { BackButton } from "../../../components/BackButton";
 import { Bullet } from "../../../components/Bullet";
@@ -20,13 +20,37 @@ import {
   Form,
   FormTitle,
 } from "./styles";
+import { Alert } from "react-native";
+
+interface Params {
+  user: {
+    name: string;
+    email: string;
+    driverLicense: string;
+  };
+}
 
 export function SignUpSecondStep() {
   const Theme = useTheme();
+  const route = useRoute();
   const navigation = useNavigation();
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const { user } = route.params as Params;
 
   function handleBack() {
     navigation.goBack();
+  }
+
+  function handleRegister() {
+    if (password || passwordConfirm) {
+      return Alert.alert("Informe a senha e a confirmação dela");
+    }
+
+    if (password !== passwordConfirm) {
+      return Alert.alert("As senhas não são iguais");
+    }
   }
   return (
     <KeyboardAvoidingView behavior={"position"} enabled>
@@ -47,8 +71,18 @@ export function SignUpSecondStep() {
 
           <Form>
             <FormTitle>2. Senha</FormTitle>
-            <PasswordInput iconName="lock" placeholder="Senha" />
-            <PasswordInput iconName="lock" placeholder="Repetir Senha" />
+            <PasswordInput
+              iconName="lock"
+              onChangeText={setPassword}
+              value={password}
+              placeholder="Senha"
+            />
+            <PasswordInput
+              iconName="lock"
+              onChangeText={setPasswordConfirm}
+              value={passwordConfirm}
+              placeholder="Repetir Senha"
+            />
           </Form>
           <Button title="Cadastrar" color={Theme.colors.success} />
         </Container>
