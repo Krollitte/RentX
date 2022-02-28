@@ -6,6 +6,7 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 
 import { Container, Header, Title, SubTitle, Form, Footer } from "./styles";
+import { PasswordInput } from "../../components/PasswordInput";
 
 export function SignIn() {
   const Theme = useTheme();
@@ -27,6 +28,14 @@ export function SignIn() {
           iconName="mail"
           autoCorrect={false}
           placeholder="E-mail"
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
+        <PasswordInput
+          iconName="lock"
+          autoCorrect={false}
+          placeholder="Senha"
+          secureTextEntry
           autoCapitalize="none"
           keyboardType="email-address"
         />
